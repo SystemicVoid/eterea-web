@@ -1,0 +1,81 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+# When using this CMS locally
+local_backend: true
+
+# Media and public folders
+media_folder: "src/assets/uploads" # Media will be stored here
+public_folder: "/assets/uploads" # And referenced from here
+
+# Collections define the structure for the different content types
+collections:
+  - name: "pages" # Used in routes, e.g., /admin/collections/pages
+    label: "Páginas" # Used in the UI
+    folder: "src/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., quienes-somos.md
+    fields: # The fields for each document
+      - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción SEO", name: "description", widget: "string"}
+      - {label: "Imagen destacada", name: "featuredImage", widget: "image", required: false}
+      - {label: "Contenido", name: "body", widget: "markdown"}
+      
+  - name: "disciplinas"
+    label: "Disciplinas"
+    folder: "src/disciplinas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "disciplina.njk"}
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción corta", name: "shortDescription", widget: "string"}
+      - {label: "Descripción completa", name: "body", widget: "markdown"}
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Orden", name: "order", widget: "number", default: 1}
+      
+  - name: "blog"
+    label: "Blog"
+    folder: "src/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post.njk"}
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Fecha de publicación", name: "date", widget: "datetime"}
+      - {label: "Autor/a", name: "author", widget: "string", default: "Eterea"}
+      - {label: "Resumen", name: "summary", widget: "text"}
+      - {label: "Imagen destacada", name: "featuredImage", widget: "image"}
+      - {label: "Contenido", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
+      
+  - name: "config"
+    label: "Configuración del sitio"
+    editor:
+      preview: false
+    files:
+      - label: "Información general"
+        name: "general"
+        file: "src/_data/site.json"
+        fields:
+          - {label: "Título del sitio", name: "title", widget: "string", default: "Eteréa - Cultura del Movimiento"}
+          - {label: "Descripción del sitio", name: "description", widget: "string"}
+          - {label: "Logo", name: "logo", widget: "image", required: false}
+          - {label: "Email de contacto", name: "email", widget: "string", required: false}
+          - {label: "Teléfono", name: "phone", widget: "string", required: false}
+          - {label: "Dirección", name: "address", widget: "text", required: false}
+          - label: "Redes Sociales"
+            name: "social"
+            widget: "list"
+            collapsed: false
+            fields:
+              - {label: "Plataforma", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
