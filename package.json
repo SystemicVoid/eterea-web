@@ -1,0 +1,29 @@
+{
+  "name": "eterea-web",
+  "version": "0.1.0",
+  "description": "Website for Eteréa - A center for movement arts featuring aerial dance, acrobatics, and flexibility",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run clean && eleventy --serve",
+    "build": "npm run clean && eleventy",
+    "clean": "rimraf _site"
+  },
+  "keywords": [
+    "eterea",
+    "movement",
+    "aerial",
+    "dance",
+    "fitness",
+    "la palma"
+  ],
+  "author": "Eterea",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "decap-cms-app": "^3.0.12"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "dotenv": "^16.3.1"
+  }
+}
