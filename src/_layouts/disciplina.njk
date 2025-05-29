@@ -1,0 +1,30 @@
+---
+layout: base.njk
+---
+
+<section class="discipline-header">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <p class="discipline-short-description">{{ shortDescription }}</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="discipline-content">
+    <div class="discipline-image">
+      <img src="{{ image }}" alt="{{ title }}" />
+    </div>
+    <div class="discipline-description">
+      {{ content | safe }}
+    </div>
+  </div>
+  
+  <div class="discipline-cta">
+    <h2>¿Quieres probar esta disciplina?</h2>
+    <p class="highlighted">NO NECESITAS TENER EXPERIENCIA PREVIA!</p>
+    <div class="cta-buttons">
+      <a href="/horarios/" class="btn">Ver horarios</a>
+      <a href="/reservas/" class="btn btn-primary">Reservar clase</a>
+    </div>
+  </div>
+</div>
