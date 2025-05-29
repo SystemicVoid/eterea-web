@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | Eteréa - Cultura del Movimiento</title>
+  <meta name="description" content="{{ description | default('Eteréa - Centro dedicado a la fusión del arte y el movimiento a través de disciplinas como acrobacias, danza aérea y flexibilidad.') }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-text">Eteréa</span>
+      </a>
+      <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false">
+          <span class="sr-only">Menú</span>
+          <span class="hamburger"></span>
+        </button>
+        <ul class="menu">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/quienes-somos/">¿Qué es Eteréa?</a></li>
+          <li><a href="/disciplinas/">Disciplinas</a></li>
+          <li><a href="/horarios/">Horarios</a></li>
+          <li><a href="/reservas/">Reservas</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Eteréa</h3>
+          <p>Centro dedicado a la fusión del arte y el movimiento.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <address>
+            <p>Dirección: <!-- Dirección física --></p>
+            <p>Teléfono: <!-- Número de teléfono --></p>
+            <p>Email: <!-- Email de contacto --></p>
+          </address>
+        </div>
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <!-- Otros enlaces de redes sociales -->
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; {{ page.date.getFullYear() }} Eteréa. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
